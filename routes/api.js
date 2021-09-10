@@ -20,4 +20,14 @@ router.get('/words/:word', async(req,res) => {
     }
 })
 
+router.get('/words/word/:letter', async(req,res) => {
+    try {
+        const letter = req.params.letter
+        const wordWithLetter = await Dictionary.find({ word: letter })
+        res.json(wordWithLetter)
+    } catch (error) {
+        throw error
+    }
+})
+
 module.exports = router;
